@@ -31,6 +31,8 @@ def parse_args():
     parser.add_argument('--max_txt_len', type=int, default=10, help='max number of char in cell')
     # color
     parser.add_argument('--color_prob', type=float, default=0, help='the prob of color cell')
+    # border settings
+    parser.add_argument('--full_border', action='store_true', help='Force generate tables with full borders (top, bottom, left, right)')
     # cell size
     parser.add_argument('--cell_max_width', type=int, default=0, help='max width of cell')
     parser.add_argument('--cell_max_height', type=int, default=0, help='max height of cell')
@@ -42,7 +44,7 @@ def parse_args():
     args = parser.parse_args()
     if args.brower == 'chrome' and sys.platform == 'darwin':
         print('firefox is recommend for Mac OS, bug you choice is chrome')
-        sys.exit(0)
+        #sys.exit(0)
     return args
 
 
@@ -63,6 +65,7 @@ if __name__ == '__main__':
                       max_span_col_count=args.max_span_col_count,
                       max_span_value=args.max_span_value,
                       color_prob=args.color_prob,
+                      full_border=args.full_border,
                       cell_max_width=args.cell_max_width,
                       cell_max_height=args.cell_max_height,
                       brower=args.brower,

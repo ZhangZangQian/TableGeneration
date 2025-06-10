@@ -25,6 +25,7 @@ class Table:
                  max_span_col_count=3,
                  max_span_value=20,
                  color_prob=0,
+                 full_border=False,
                  cell_max_width=0,
                  cell_max_height=0):
         assert cell_box_type in [
@@ -36,6 +37,7 @@ class Table:
         self.max_txt_len = max_txt_len
         self.min_txt_len = min_txt_len
         self.color_prob = color_prob
+        self.full_border = full_border
         self.cell_max_width = cell_max_width
         self.cell_max_height = cell_max_height
         self.max_span_row_count = max_span_row_count
@@ -99,8 +101,11 @@ class Table:
             }  # 绘制右竖线
         }
 
-        # 随机选择一种
-        self.border_type = random.choice(list(self.pre_boder_style.keys()))
+        # 边框类型选择：优先使用full_border设置，否则随机选择
+        if self.full_border:
+            self.border_type = 1  # 强制设置为完整四边框
+        else:
+            self.border_type = random.choice(list(self.pre_boder_style.keys()))
 
         self.spanflag = False
         '''cell_types matrix have two possible values:

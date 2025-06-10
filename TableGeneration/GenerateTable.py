@@ -33,6 +33,7 @@ class GenerateTable:
             min_txt_len=2,
             max_txt_len=7,
             color_prob=0,
+            full_border=False,
             cell_max_width=0,
             cell_max_height=0,
             brower="chrome",
@@ -49,6 +50,7 @@ class GenerateTable:
         self.max_txt_len = max_txt_len  # maximum number of chars in a cell
         self.min_txt_len = min_txt_len  # minimum number of chars in a cell
         self.color_prob = color_prob  # color cell prob
+        self.full_border = full_border  # force full border
         self.cell_max_width = cell_max_width  # max cell w
         self.cell_max_height = cell_max_height  # max cell h
         self.max_span_row_count = max_span_row_count  # max span row count
@@ -134,6 +136,7 @@ class GenerateTable:
                 self.max_span_col_count,
                 self.max_span_value,
                 self.color_prob,
+                self.full_border,
                 self.cell_max_width,
                 self.cell_max_height, )
             # get table of rows and cols based on unlv distribution and get features of this table
